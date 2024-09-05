@@ -98,10 +98,10 @@ class ProductResource extends Resource
                     Forms\Components\Section::make('Shipping')
                         ->schema([
                             Forms\Components\Checkbox::make('backorder')
-                                ->label('This product can be returned'),
+                                ->label('Este produto pode ser devolvido'),
 
                             Forms\Components\Checkbox::make('requires_shipping')
-                                ->label('This product will be shipped'),
+                                ->label('Este produto será enviado'),
                         ])
                         ->columns(2),
                 ])

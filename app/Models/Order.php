@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Shop;
+namespace App\Models;
 
 use App\Enums\OrderStatusEnum;
 use App\Models\Address;
@@ -22,7 +22,7 @@ class Order extends Model
     /**
      * @var string
      */
-    protected $table = 'shop_orders';
+    protected $table = 'orders';
 
     /**
      * @var array<int, string>
@@ -44,19 +44,19 @@ class Order extends Model
     /** @return MorphOne<OrderAddress> */
     public function address(): MorphOne
     {
-        return $this->morphOne(Address::class, 'addressable');
+        return $this->morphOne(Address::class, 'address');
     }
 
     /** @return BelongsTo<Customer,self> */
     public function customer(): BelongsTo
     {
-        return $this->belongsTo(Customer::class, 'shop_customer_id');
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
     /** @return HasMany<OrderItem> */
     public function items(): HasMany
     {
-        return $this->hasMany(OrderItem::class, 'shop_order_id');
+        return $this->hasMany(OrderItem::class, 'order_id');
     }
 
     /** @return HasMany<Payment> */

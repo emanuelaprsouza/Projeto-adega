@@ -22,11 +22,11 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static ?string $slug = 'shop/orders';
+    protected static ?string $slug = 'orders';
 
     protected static ?string $recordTitleAttribute = 'number';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Loja';
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
@@ -103,7 +103,7 @@ class OrderResource extends Resource
                 ->maxLength(32)
                 ->unique(Order::class, 'number', ignoreRecord: true),
 
-            Forms\Components\Select::make('shop_customer_id')
+            Forms\Components\Select::make('customer_id')
                 ->relationship('customer', 'name')
                 ->searchable()
                 ->required()
@@ -156,7 +156,7 @@ class OrderResource extends Resource
         return Repeater::make('items')
             ->relationship()
             ->schema([
-                Forms\Components\Select::make('shop_product_id')
+                Forms\Components\Select::make('product_id')
                     ->label('Product')
                     ->options(Product::query()->pluck('name', 'id'))
                     ->required()
@@ -195,7 +195,7 @@ class OrderResource extends Resource
                     ->url(function (array $arguments, Repeater $component): ?string {
                         $itemData = $component->getRawItemState($arguments['item']);
 
-                        $product = Product::find($itemData['shop_product_id']);
+                        $product = Product::find($itemData['product_id']);
 
                         if (! $product) {
                             return null;
@@ -203,9 +203,9 @@ class OrderResource extends Resource
 
                         return ProductResource::getUrl('edit', ['record' => $product]);
                     }, shouldOpenInNewTab: true)
-                    ->hidden(fn (array $arguments, Repeater $component): bool => blank($component->getRawItemState($arguments['item'])['shop_product_id'])),
+                    ->hidden(fn (array $arguments, Repeater $component): bool => blank($component->getRawItemState($arguments['item'])['product_id'])),
             ])
-            ->orderColumn('sort')
+            // ->orderColumn('sort')
             ->defaultItems(1)
             ->hiddenLabel()
             ->columns([
