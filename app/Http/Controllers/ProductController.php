@@ -26,6 +26,16 @@ class ProductController extends Controller
         return view('catalog.products', compact('products', 'categories'));
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'ILIKE', "%{$query}%")
+            ->get();
+
+        return response()->json($products);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -14,6 +14,8 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 
+Route::get('/search-products', [ProductController::class, 'search'])->name('products.search');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

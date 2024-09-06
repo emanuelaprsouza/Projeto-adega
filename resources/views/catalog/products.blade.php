@@ -6,7 +6,6 @@
             categories: @js($categories),
             cart: [],
             addToCart(product) {
-                console.log({ product_id: product.id })
                 fetch('/cart/add', {
                     method: 'POST',
                     headers: {
@@ -16,7 +15,6 @@
                     body: JSON.stringify({ product_id: product.id })
                 })
                 .then(response => {
-                    console.log(response);
                     if (response.status === 401) {
                         // Redireciona para a página de login
                         window.location.href = response.json().then(data => data.redirect);
@@ -29,7 +27,7 @@
                 .then(data => {
                     if (data && data.message) {
                         alert(data.message);
-                        this.cart.push(product); // Atualiza o estado do carrinho
+                        this.cart.push(product);
                     }
                 })
                 .catch(error => console.error('Erro ao adicionar ao carrinho:', error));

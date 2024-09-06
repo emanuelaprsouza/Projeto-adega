@@ -7,27 +7,27 @@
     <section class="p-4 flex flex-col bg-orange-300">
         <h2 class="font-bold text-2xl mb-4">Serviços</h2>
         <div class="w-full flex items-center justify-between">
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/destilados.jpeg') }}" alt="Destilados">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/espumante.jpeg') }}" alt="Espumante">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/vinhos.jpeg') }}" alt="Vinhos">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/cerveja.jpeg') }}" alt="Cervejas">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/diversos.jpeg') }}" alt="Diversos">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
-            <a href="/" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
+            <a href="/products" class="border border-solid border-black p-2 flex flex-col gap-2 items-center">
                 <img class="w-32 h-auto" src="{{ asset('images/acessorios.jpeg') }}" alt="Acessorios">
                 <p class="border border-solid border-black rounded-lg px-2 text-white">Leia mais</p>
             </a>
