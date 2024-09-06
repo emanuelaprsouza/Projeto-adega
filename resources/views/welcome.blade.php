@@ -905,25 +905,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <header class="bg-slate-950 text-white">
-        <nav class="container px-10 py-4 flex items-center justify-between">
-            <a href="/" class="uppercase">orange drink's</a>
-            <form action="" class="rounded-lg bg-white">
-                <input class="rounded-lg bg-inherit" type="text" placeholder="Pesquisar...">
-            </form>
-            <ul class="flex gap-4">
-                <li>
-                    <a href="">Atendimento</a>
-                </li>
-                <li>
-                    <a href="">Seu carrinho</a>
-                </li>
-                <li>
-                    <a href="">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+
 
     <main class="min-h-screen flex flex-col">
     </main>
