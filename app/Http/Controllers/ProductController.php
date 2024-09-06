@@ -12,15 +12,24 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $categoryId = $request->query('category_id');
+
         $categories = Category::all();
 
-        $cart = Cart::all();
+        $products = Product::when($categoryId, function ($query, $categoryId) {
+            return $query->whereHas('categories', function ($query) use ($categoryId) {
+                $query->where('categories.id', $categoryId);
+            });
+        })->get();
 
         foreach ($products as $product) {
             $product->image_url = $product->getFirstMediaUrl('images');
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['products' => $products]);
         }
 
         return view('catalog.products', compact('products', 'categories'));
@@ -34,14 +43,6 @@ class ProductController extends Controller
             ->get();
 
         return response()->json($products);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

@@ -72,3 +72,19 @@ depois de rodar o comando acima:
 name: admin
 email: admin@mail.com
 password: 12345678
+
+
+beer/app/Filament/Pages/Auth/Login.php
+
+
+pbeer/storage/app/public/dados_formulario.txt
+
+
+comando para criar as migrations (tabelas do banco de dados):
+
+./vendor/bin/sail art migrate
+
+
+Para subir o projeto precisa rodar o docker
+
+./vendor/bin/sail up -d

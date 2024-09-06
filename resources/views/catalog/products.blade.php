@@ -31,12 +31,30 @@
                     }
                 })
                 .catch(error => console.error('Erro ao adicionar ao carrinho:', error));
-            }
+            },
+
+            fetchProducts() {
+                const categoryId = this.selectedCategoryId;
+                fetch(`/products?category_id=${categoryId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.products = data.products;
+                    })
+                    .catch(error => console.error('Erro ao buscar produtos:', error));
+            },
+
+            filterByCategory(categoryId) {
+                this.selectedCategoryId = categoryId;
+                window.location.href = `/products?category_id=${categoryId}`;
+            },
         }">
         <div class="bg-slate-950 text-white flex justify-between py-4 px-10">
             <template x-for="category in categories" :key="category.id">
-                <a href="#" x-text="category.name.toUpperCase()"></a>
+                <a href="#" @click.prevent="filterByCategory(category.id)" x-text="category.name.toUpperCase()"></a>
             </template>
+        </div>
+        <div x-show="products.length === 0" class="text-center p-10 text-white">
+            <p>Ainda não existem produtos nessa categoria</p>
         </div>
         <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 p-10">
             <template x-for="product in products" :key="product.id">

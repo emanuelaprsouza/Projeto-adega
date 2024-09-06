@@ -14,7 +14,17 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('catalog/cart');
+        $user = Auth::user();
+
+        $carts = Cart::with('product')
+            ->where('user_id', $user->id)
+            ->get();
+
+        foreach ($carts as $cart) {
+            $cart->product->image_url = $cart->product->getImageUrlAttribute();
+        }
+
+        return view('catalog/cart', compact('carts'));
     }
 
     /**

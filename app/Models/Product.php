@@ -44,4 +44,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(Category::class, 'category_products', 'product_id', 'category_id');
     }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->getFirstMediaUrl('images');
+    }
 }

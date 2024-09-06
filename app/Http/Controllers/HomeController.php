@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
 class HomeController extends Controller
 {
     /**
@@ -9,6 +11,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('catalog/home');
+        $categories = Category::all();
+
+        foreach ($categories as $category) {
+            $category->image_url = $category->getFirstMediaUrl('images');
+        }
+
+        return view('catalog/home', compact('categories'));
     }
 }

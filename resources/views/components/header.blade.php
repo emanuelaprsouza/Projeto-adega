@@ -15,7 +15,7 @@
         </form>
         <ul class="flex gap-4">
             <li>
-                <a href="">Atendimento</a>
+                <a href="https://api.whatsapp.com/send?phone=5512996850538&text=Ol%C3%A1!%20Como%20posso%20te%20ajudar?" class="a1" target="_blank">Atendimento</a>
             </li>
             <li>
                 <a href="">Seu carrinho</a>

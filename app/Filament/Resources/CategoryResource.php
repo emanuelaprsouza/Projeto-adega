@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,9 +10,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Filament\Notifications\Notification;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class CategoryResource extends Resource
 {
@@ -49,6 +48,16 @@ class CategoryResource extends Resource
                                     ->unique(Category::class, 'slug', ignoreRecord: true),
                             ]),
 
+                        Forms\Components\Section::make('Imagens')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('media')
+                                    ->collection('product-images')
+                                    ->multiple()
+                                    ->maxFiles(5)
+                                    ->hiddenLabel(),
+                            ])
+                            ->collapsible(),
+
                         Forms\Components\Select::make('parent_id')
                             ->label('Parent')
                             ->relationship('parent', 'name', fn (Builder $query) => $query->where('parent_id', null))
@@ -83,6 +92,9 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('product-image')
+                    ->label('Imagem')
+                    ->collection('product-images'),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nome')
                     ->searchable()
@@ -106,13 +118,7 @@ class CategoryResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->groupedBulkActions([
-                Tables\Actions\DeleteBulkAction::make()
-                    ->action(function () {
-                        Notification::make()
-                            ->title('Now, now, don\'t be cheeky, leave some records for others to play with!')
-                            ->warning()
-                            ->send();
-                    }),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

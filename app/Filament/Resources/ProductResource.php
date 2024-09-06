@@ -2,19 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Clusters\Products\Resources\BrandResource\RelationManagers\ProductsRelationManager;
-use App\Filament\Clusters\Products\Resources\ProductResource\RelationManagers\CommentsRelationManager;
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Filters\QueryBuilder\Constraints\BooleanConstraint;
@@ -226,13 +220,7 @@ class ProductResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->groupedBulkActions([
-                Tables\Actions\DeleteBulkAction::make()
-                    ->action(function () {
-                        Notification::make()
-                            ->title('Now, now, don\'t be cheeky, leave some records for others to play with!')
-                            ->warning()
-                            ->send();
-                    }),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
