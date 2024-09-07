@@ -13,7 +13,7 @@
                 <p class="p-2 text-gray-700">Exemplo de Resultado para: "<span x-text="search"></span>"</p>
             </div>
         </form>
-        <ul class="flex gap-4">
+        <ul class="flex gap-4 text-white">
             <li>
                 <a href="https://api.whatsapp.com/send?phone=5512996850538&text=Ol%C3%A1!%20Como%20posso%20te%20ajudar?" class="a1" target="_blank">Atendimento</a>
             </li>

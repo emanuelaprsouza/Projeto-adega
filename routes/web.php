@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -20,6 +21,11 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/search-products', [ProductController::class, 'search'])->name('products.search');
 
 Route::post('/save-form', [FormController::class, 'store'])->name('form_save');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout.show');
+    Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

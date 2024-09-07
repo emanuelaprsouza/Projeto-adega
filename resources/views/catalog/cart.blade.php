@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="min-h-screen bg-primary flex flex-col lg:flex-row items-center justify-between p-10 text-white gap-10" x-data="{ carts: @js($carts) }" x-init="console.log(carts)">
+    <div class="min-h-screen bg-primary flex flex-col lg:flex-row items-center justify-between p-10 text-white gap-10" x-data="{ carts: @js($carts) }">
         <div class="flex flex-col gap-4">
             <template x-for="cart in carts" :key="cart.id">
                 <div class="flex gap-4 border border-solid border-white p-4">
@@ -19,7 +19,7 @@
         <div class="h-96 flex-1 flex flex-col items-center justify-between border border-solid bg-white text-black p-10">
             <h2 class="text-2xl font-bold">Resumo do Pedido</h2>
             <p class="flex gap-10">Total: <span x-text="`R$ ${carts.reduce((acc, curr) => acc += curr.product.price * curr.quantity, 0)}`"></span></p>
-            <a href="#" class="uppercase bg-black text-white p-4 rounded-lg">finalizar pedido</a>
+            <a href="/checkout" class="uppercase bg-black text-white p-4 rounded-lg">finalizar pedido</a>
         </div>
     </div>
 </x-app-layout>

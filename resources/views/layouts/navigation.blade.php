@@ -7,7 +7,7 @@
                     <a href="/" class="uppercase">orange drink's</a>
                 </div>
 
-                <div x-data="searchComponent()" x-ref="searchContainer" class="relative">
+                <div x-data="searchComponent()" x-ref="searchContainer" class="relative hidden lg:flex">
                     <input
                         type="text"
                         placeholder="Pesquisar bebidas..."
@@ -27,12 +27,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 lg:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        Atendimento
-                    </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    <a href="https://api.whatsapp.com/send?phone=5512996850538&text=Ol%C3%A1!%20Como%20posso%20te%20ajudar?" class="a1" target="_blank">Atendimento</a>
+                    <a href="/cart">
                         Seu carrinho
-                    </x-nav-link>
+                    </a>
                 </div>
 
                 <!-- Settings Dropdown -->
@@ -52,7 +50,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -96,7 +94,7 @@
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
